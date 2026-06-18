@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contador de Valores</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <h1>Contador de Valores</h1>
+
+        <p>
+            Digite um valor para descobrir quantas vezes ele foi enviado
+            ao servidor.
+        </p>
+
+        <form id="form-contador">
+        <label for="valor">Digite um valor:</label>
+
+        <div class="linha-envio">
+            <input
+                type="text"
+                id="valor"
+                name="valor"
+                placeholder="Exemplo: 10"
+                autocomplete="off"
+            >
+
+            <button type="submit" id="botao-enviar">
+                Enviar
+            </button>
+        </div>
+    </form>
+
+        <div id="resultado" aria-live="polite"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
