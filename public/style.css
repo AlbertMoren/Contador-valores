@@ -141,3 +141,16 @@ label[for="valor"] {
     color: #6b7280;
     line-height: 1.5;
 }
+
+#botao-enviar:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#resultado.erro {
+    color: #b42318;
+    background: #fef3f2;
+    border-color: #fecdca;
+    font-size: 14px;
+}
