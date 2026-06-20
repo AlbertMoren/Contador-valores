@@ -4,7 +4,6 @@ const path = require("path");
 const app = express();
 const PORTA = 3000;
 
-//armazena os cont
 const contagens = {};
 
 app.use(express.json());
@@ -13,14 +12,15 @@ app.use(express.static(path.join(__dirname,"public")));
 
 app.post("/contar",(req,res) => {
     const valorRecebido = req.body.valor;
+    const numero = Number(valorRecebido)
 
-    if(valorRecebido == undefined || valorRecebido == null ||  String(valorRecebido).trim() === ""){
+    if(valorRecebido == undefined || valorRecebido == null ||  String(valorRecebido).trim() === "" || !Number.isFinite(numero)){
         return res.status(400).json({
-            erro: "Digite um valor valido."
+            erro: "Digite um numero valido."
         });
     }
 
-    const valor = String(valorRecebido.trim());
+    const valor = String(numero);
 
     if(contagens[valor]==undefined){
         contagens[valor] = 1;
