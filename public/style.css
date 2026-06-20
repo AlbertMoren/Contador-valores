@@ -154,3 +154,61 @@ label[for="valor"] {
     border-color: #fecdca;
     font-size: 14px;
 }
+
+.historico {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.historico h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 0.75rem;
+}
+
+#tabela-vazia {
+    margin: 0;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#tabela-contagens {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+#tabela-contagens th,
+#tabela-contagens td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#tabela-contagens th {
+    background: #f9fafb;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#tabela-contagens td {
+    color: #374151;
+}
+
+#tabela-contagens th:last-child,
+#tabela-contagens td:last-child {
+    text-align: right;
+}
+
+#tabela-contagens tbody tr:hover {
+    background: #f9fafb;
+}

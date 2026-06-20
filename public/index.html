@@ -38,6 +38,26 @@
     </form>
 
         <div id="resultado" aria-live="polite"></div>
+        <section class="historico">
+            <h2>Valores registrados</h2>
+
+            <p id="tabela-vazia">
+                nenhum valor foi enviado ainda
+            </p>
+
+            <div class="tabela-container">
+                <table id="tabela-contagens" hidden>
+                    <thead>
+                        <tr>
+                            <th>Valor</th>
+                            <th>Quantidade</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="corpo-tabela"></tbody>
+                </table>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>

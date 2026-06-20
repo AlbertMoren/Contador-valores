@@ -2,6 +2,10 @@ const formulario = document.getElementById("form-contador");
 const campoValor = document.getElementById("valor");
 const botaoEnviar = document.getElementById("botao-enviar");
 const resultado = document.getElementById("resultado");
+const tabelaContagens = document.getElementById("tabela-contagens");
+const corpoTabela = document.getElementById("corpo-tabela");
+const tabelaVazia = document.getElementById("tabela-vazia");
+document.addEventListener("DOMContentLoaded", atualizarTabela);
 
 formulario.addEventListener("submit", async (evento) => {
     evento.preventDefault();
@@ -45,6 +49,7 @@ formulario.addEventListener("submit", async (evento) => {
         }
 
         mostrarResultado(dados.valor, dados.quantidade);
+        await atualizarTabela();
         campoValor.select();
 
     } catch (erro) {
@@ -74,4 +79,45 @@ function mostrarResultado(valor, quantidade) {
 function mostrarErro(mensagem) {
     resultado.textContent = mensagem;
     resultado.classList.add("erro");
+}
+
+async function atualizarTabela() {
+    try {
+        const resposta = await fetch("/contagens");
+
+        if (!resposta.ok) {
+            throw new Error("Não foi possível carregar as contagens.");
+        }
+
+        const listaContagens = await resposta.json();
+
+        corpoTabela.replaceChildren();
+
+        if (listaContagens.length === 0) {
+            tabelaContagens.hidden = true;
+            tabelaVazia.hidden = false;
+            return;
+        }
+
+        tabelaContagens.hidden = false;
+        tabelaVazia.hidden = true;
+
+        listaContagens.forEach((item) => {
+            const linha = document.createElement("tr");
+
+            const colunaValor = document.createElement("td");
+            colunaValor.textContent = item.valor;
+
+            const colunaQuantidade = document.createElement("td");
+            colunaQuantidade.textContent = item.quantidade;
+
+            linha.append(colunaValor, colunaQuantidade);
+            corpoTabela.appendChild(linha);
+        });
+
+    } catch (erro) {
+        tabelaContagens.hidden = true;
+        tabelaVazia.hidden = false;
+        tabelaVazia.textContent = erro.message;
+    }
 }

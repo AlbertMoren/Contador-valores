@@ -38,3 +38,14 @@ app.post("/contar",(req,res) => {
 app.listen(PORTA, () => {
     console.log(`Servidor iniciado em http://localhost:${PORTA}`);
 })
+
+app.get("/contagens", (req, res) => {
+    const listaContagens = Object.entries(contagens)
+        .map(([valor, quantidade]) => ({
+            valor,
+            quantidade
+        }))
+        .sort((a, b) => Number(a.valor) - Number(b.valor));
+
+    res.json(listaContagens);
+});
